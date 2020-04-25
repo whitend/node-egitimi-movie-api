@@ -44,6 +44,7 @@ router.post('/add', (req,res,next) => {
 });
 
 //list all films
+/*
 router.get('/', (req,res) => {
   const promise = Movie.find({ });
   promise.then((data) => {
@@ -52,6 +53,32 @@ router.get('/', (req,res) => {
     res.json(err);
   })
 });
+*/
+//list all films with directors
+router.get('/', (req,res) => {
+  const promise = Movie.aggregate([
+    {
+      $lookup: {
+        from: 'directors',
+        localField: 'director_id',
+        foreignField : '_id',
+        as : 'director'
+      }
+    },
+    {
+      $unwind: {
+        path: '$director',
+        preserveNullAndEmptyArrays: true
+      }
+    }
+  ])
+  promise.then((movies) =>{
+   res.json(movies);
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
 
 //top10 sıralaması
 
