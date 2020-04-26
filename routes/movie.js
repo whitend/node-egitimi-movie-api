@@ -124,7 +124,7 @@ router.put('/:movie_id', (req,res,next) => {
     if(!movie){
       next({message: 'The movie was not found', code: 98});
     }else{
-      //res.json(movie);
+      res.json(movie);
       //res.json({status : 1});
     }
   }).catch((err) => {
