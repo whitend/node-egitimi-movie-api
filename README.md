@@ -1,3 +1,4 @@
+[![Build status](https://travis-ci.com/whitend/node-egitimi-movie-api.svg?branch=master)](https://travis-ci.com/github/whitend/node-egitimi-movie-api/)
 # node-egitimi-movie-api
 Node.JS Egitim Seti Movie API
  Movies
